@@ -8,6 +8,11 @@ class Github extends Component{
     handleChange = (ev) => {
         this.setState({username: ev.target.value})
     }
+    handleSubmit = (ev) => {
+        ev.preventDefault()
+        this.props.hisotry.push('/github/${this.state.username}')
+        this.setState({username: " "}) 
+    }
 
     render(){
         <div className='github'>
@@ -15,7 +20,7 @@ class Github extends Component{
             src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png"
             alt="github logo"
             />
-        <form>
+        <form onSubmit={this.handleSubmit}>
             <div>
              <input 
              type="text" 
@@ -23,6 +28,8 @@ class Github extends Component{
              onChange={this.handlechange}
              />
             </div>
+            <div>
+                <button>
         </form>
 
         </div>
