@@ -8,27 +8,28 @@ class FilmInfo extends Component {
 
     componentWillMount = () => {
     this.fetchMovieData(this.props)
-    }
-
-  fetchMovieData = (props) => {
-    fetch(`https://api.themoviedb.org/3/find/${props.match.params.movie}`)
-      .then(response => response.json())
-      .then(movie => this.setState({ movie }))
-  }
-
-  componentWillReceiveProps(nextProps) {
+}
+    componentWillReceiveProps(nextProps) {
     const locationChanged = nextProps.location !== this.props.location
     if (locationChanged) {
       this.fetchMovieData(nextProps)
     }
   }
 
+    fetchMovieData = (props) => {
+        fetch(`https://api.themoviedb.org/3/movie/${props.match.params.movie}?api_key=864049850253cfd16b1d2c5b85fc9095&language=en-US`)
+            .then(response => response.json())
+            .then(movie => this.setState({ movie }))
+  }
+
+
+
   render() {
     const { movie } = this.state
     return (
       <div className="film-movie">
         <img src={movie.movie_result} alt="movie poster" />
-        <h2>{movie.title}</h2>
+        <h2>You searched: {movie.title}</h2>
         <h3>Overview: {movie.overview}</h3>
         <h3>Popularity: {movie.popularity}</h3>
         <h3>Release Date: {movie.release_date}</h3>

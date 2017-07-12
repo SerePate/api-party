@@ -24,7 +24,7 @@ class Films extends Component {
         <img 
           className="film-logo" 
           src="https://www.themoviedb.org/assets/static_cache/afc8955ea7e6aabcf0c9d8254346b928/images/v4/logos/312x276-primary-blue.png"
-          alt="film logo"
+          alt="movie database logo"
         />
         <form onSubmit={this.handleSubmit}>
           <div>
