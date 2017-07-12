@@ -30,7 +30,6 @@ class SpotifyArtist extends Component{
         const{ artist } = this.state
         return(
             <div className="spotify-artist">
-                <img src={artist.avatar_url} alt="artist's profile picture" />
                 <h2>{artist.name}</h2>
                 <h3>Top Tracks: {artist.tracks}</h3>
                 <h3>Albums: {artist.albums}</h3>

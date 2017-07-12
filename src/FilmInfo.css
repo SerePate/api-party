@@ -1,0 +1,8 @@
+.film-movie img {
+  height: 200px;
+  border-radius: 50%;
+}
+
+.film-movie h3 {
+  color: #999;
+}

@@ -2,18 +2,16 @@ import React, { Component } from 'react'
 import './FilmInfo.css'
 
 class FilmInfo extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
+    state = {
       movie: {}
     }
 
-    this.fetchUserData(props)
-  }
+    componentWillMount = () => {
+    this.fetchMovieData(this.props)
+    }
 
   fetchMovieData = (props) => {
-    fetch(`https://api.themoviedb.org/3/movie/${props.match.params.username}`)
+    fetch(`https://api.themoviedb.org/3/find/${props.match.params.movie}`)
       .then(response => response.json())
       .then(movie => this.setState({ movie }))
   }
@@ -29,12 +27,11 @@ class FilmInfo extends Component {
     const { movie } = this.state
     return (
       <div className="film-movie">
-        <img src={movie.avatar_url} alt="github movie avatar" />
-        <h2>{movie.login}</h2>
-        <h3>followers: {movie.followers}</h3>
-        <h3>following: {movie.following}</h3>
-        <h3>location: {movie.location}</h3>
-        <a href={movie.html_url} target="_">Link to {movie.login}'s profile</a>
+        <img src={movie.movie_result} alt="movie poster" />
+        <h2>{movie.title}</h2>
+        <h3>Overview: {movie.overview}</h3>
+        <h3>Popularity: {movie.popularity}</h3>
+        <h3>Release Date: {movie.release_date}</h3>
       </div>
     )
   }
